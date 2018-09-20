@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .wrapper{
+            width: 300px;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin: 150px auto;
+
+            position: relative;
+        }
+        .clock{ list-style: none; margin: 0; padding: 0; position: relative;
+            /*让指针在表盘内*/
+            margin-left: 148px;
+        }
+        /*处理刻度样式*/
+        .clock li{
+            background-color: #000;
+            width: 4px;
+            height: 6px;
+
+            /*让所有的刻度都位于同一位置*/
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            /*设置旋转的中心点*/
+            transform-origin: 2px 150px;
+
+        }
+        .clock li:nth-child(5n+1){
+            width: 6px;
+            height: 12px;
+        }
+
+        /*设置秒针的样式*/
+        .sec{
+            background-color: #f00;
+            width: 2px;
+            height: 100px;
+
+            position: absolute;
+            left: 149px;
+            top: 50px;
+
+            transform-origin: bottom;
+        }
+        .min{
+            background-color: #00f;
+            width: 4px;
+            height: 70px;
+
+            position: absolute;
+            left: 148px;
+            top: 80px;
+
+            transform-origin: bottom;
+        }
+        .hour{
+            background-color: #000;
+            width: 6px;
+            height: 50px;
+
+            position: absolute;
+            left: 147px;
+            top: 100px;
+
+            transform-origin: bottom;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!--60个刻度-->
+        <ul class="clock"></ul>
+        <!--时，分，秒针-->
+        <div class="sec"></div>
+        <div class="min"></div>
+        <div class="hour"></div>
+    </div>
+
+
+<script type="text/javascript">
+    var clock = document.querySelector(".clock");
+//    动态产生60个Li(刻度)
+    for (var i = 0; i < 60; i++) {
+        var liDom = document.createElement("li");
+//        设置每个刻度旋转角度
+        liDom.style.transform = "rotate(" + i*6 + "deg)";
+        clock.appendChild(liDom);
+    }
+
+//    每隔1秒，获取时间
+    setInterval(function(){
+//        获取当前时间
+        var date = new Date();
+
+//        获取秒
+        var seconds = date.getSeconds();
+//        获取分钟  -- 把秒转换成分钟 添加到分钟
+        var minutes = date.getMinutes() + seconds/60;
+//        获取小时 -- 把分钟转换成小时 添加到小时
+        var hours = date.getHours() + minutes/60;
+
+//        分别获取时针，分针，秒针的Dom
+        var secDom = document.querySelector(".sec");
+        var minDom = document.querySelector(".min");
+        var hourDom = document.querySelector(".hour");
+
+//        设置时针，分针，秒针的旋转角度
+
+        secDom.style.transform = "rotate(" + seconds*6 + "deg)";
+        minDom.style.transform = "rotate(" + minutes*6 + "deg)";
+        hourDom.style.transform = "rotate(" + hours*30 + "deg)";
+
+
+    }, 1000);
+
+
+</script>
+</body>
+</html>

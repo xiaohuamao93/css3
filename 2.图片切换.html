@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        /*样式重置*/
+        body, ul{
+            padding: 0; margin: 0;
+        }
+        ul{ list-style: none }
+        /*设置包裹器样式*/
+        .wrapper{
+            width: 540px;
+            margin: 0 auto;
+        }
+        img{
+            /*设置元素宽度为 100% 与父元素宽度一致，随着父元素宽度变化而变化*/
+            width: 100%;
+        }
+        .banner{ position: relative;
+            /*如果是绝对定位造成的父元素高度塌陷，使用height撑起父元素的高度*/
+            height: 340px;
+        }
+        /*.banner:after{*/
+            /*content: "";*/
+            /*display: table;*/
+            /*clear: both;*/
+
+        /*}*/
+        .banner li img{
+            /*通过绝对定位让所有图片显示在同一位置*/
+            position: absolute;
+            /*支持移动端*/
+            top: 0;
+            left: 0;
+        }
+
+        /*隐藏所有li,除了第一个*/
+        .banner li{ visibility: hidden}
+        .banner li:first-child{visibility: visible}
+
+        /*当banner的li处于:target时，显示*/
+        .banner li:target{ visibility: visible}
+
+        .thumbnail li{
+            float: left;
+            width: 90px;
+        }
+        /*当鼠标悬浮在li时，元素透明*/
+        .thumbnail li:hover{
+            opacity: .5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!--banner图-->
+        <!--ul>li*6>img[src=img/jd$$$.jpg]-->
+        <ul class="banner">
+            <li id="jd001"><img src="img/jd001.jpg" alt=""></li>
+            <li id="jd002"><img src="img/jd002.jpg" alt=""></li>
+            <li id="jd003"><img src="img/jd003.jpg" alt=""></li>
+            <li id="jd004"><img src="img/jd004.jpg" alt=""></li>
+            <li id="jd005"><img src="img/jd005.jpg" alt=""></li>
+            <li id="jd006"><img src="img/jd006.jpg" alt=""></li>
+        </ul>
+
+        <!--缩略图(thumbnail)-->
+        <ul class="thumbnail">
+            <!--开启列编辑模式： alt + 鼠标左键 -->
+            <li><a href="#jd001"><img src="img/jd001.jpg" alt=""></a></li>
+            <li><a href="#jd002"><img src="img/jd002.jpg" alt=""></a></li>
+            <li><a href="#jd003"><img src="img/jd003.jpg" alt=""></a></li>
+            <li><a href="#jd004"><img src="img/jd004.jpg" alt=""></a></li>
+            <li><a href="#jd005"><img src="img/jd005.jpg" alt=""></a></li>
+            <li><a href="#jd006"><img src="img/jd006.jpg" alt=""></a></li>
+        </ul>
+
+    </div>
+
+
+</body>
+</html>

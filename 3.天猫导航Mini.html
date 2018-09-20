@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            padding: 200px 0 0 200px;
+        }
+        /*样式重置*/
+        .menu{
+            list-style: none;
+        }
+        .menu li{
+            float: left;
+            /*设置菜单项固定的宽度和高度 120px * 36px*/
+            width: 120px;
+            height: 36px;
+            /*文字居中*/
+            line-height: 36px;
+            text-align: center;
+            background-color: #dd2727;
+
+            position: relative;
+
+            font-family: Arial, "Microsoft YaHei UI Light";
+        }
+
+        .tmall-icon{
+            display: inline-block;
+            width: 40px;
+            height: 15px;
+            background: url("img/tmall.png") no-repeat;
+            /*设置背景图的大小*/
+            background-size: 40px 15px;
+
+            /*让其脱离文档流，不影响文字的对齐*/
+            position: absolute;
+            top: 0;
+            left: 40px;
+            /*降低图标的层级，防止覆盖文字*/
+            z-index: -1;
+        }
+
+        /*当鼠标悬浮在菜单项，显示图标*/
+        .menu li:hover  .tmall-icon{
+            transform: translateY(-10px);
+            transition: .3s linear;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!--ul>li*3>a[href=#]{item}-->
+    <!--如果样式存在复用， 使用class设计CSS样式-->
+    <!--如果与后台JS交互，使用ID-->
+    <ul class="menu">
+        <!--
+        如果使用背景图，背景图片是在网页全部加载完毕后，在请求加载  --- 对网页加载影响是最小的。
+        如果使用img元素，的src引入背景图，会与HTML文档同步加载   --- 性能低，影响网页的加载速度。
+        -->
+         <!--i = icon 可以理解为icon-->
+        <li><i class="tmall-icon"></i><a href="#">天猫超市</a></li>
+        <li><i class="tmall-icon"></i><a href="#">美妆</a></li>
+        <li><i class="tmall-icon"></i><a href="#">母婴</a></li>
+    </ul>
+</body>
+</html>

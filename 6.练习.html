@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input{
+            background-color: lightyellow;
+        }
+        /*1.伪类触发过渡
+        input:focus{
+            transition: .3s linear;
+            background-color: lightpink;
+        }*/
+        .bg-green{
+            background-color: greenyellow;
+            transition: .3s linear;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="text" class="asaas ">
+
+<script type="text/javascript">
+    var inputDom = document.querySelector("[type=text]");
+//    2.通过JS也可以触发一个过渡
+
+    inputDom.onfocus = function(){
+        //给DOM动态加一个属性
+        inputDom.setAttribute("class", "bg-green");
+    }
+//    失去鼠标焦点
+    inputDom.onblur = function(){
+//        删除添加的属性
+        inputDom.removeAttribute("class");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .box{
+            width: 300px;
+            height: 200px;
+            background-color: yellowgreen;
+
+            position: relative;
+        }
+        .box-border-top{
+            height: 8px;
+            width: 0;
+            background-color: orange;
+        }
+        .box-border-right{
+            width: 8px;
+            height: 0;
+            background-color: orange;
+
+            /*右边框，位于元素的右上角*/
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .box-border-bottom{
+            height: 8px;
+            width: 0;
+            background-color: orange;
+
+            /*下边框，位于元素的右上下角*/
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .box-border-left{
+            width: 8px;
+            height: 0;
+            background-color: orange;
+
+            /*右边框，位于元素的右上角*/
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        /*当鼠标悬浮在.box是四个边框逐渐显示*/
+        .box:hover .box-border-top{
+            width: 100%;
+            transition: .5s linear;
+        }
+        .box:hover .box-border-right{
+            height: 100%;
+            transition: .5s linear .5s;
+        }
+        .box:hover .box-border-bottom{
+            width: 100%;
+            transition: .5s linear 1s;
+        }
+        .box:hover .box-border-left{
+            height: 100%;
+            transition: .5s linear 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <!--具有过渡效果的边框-->
+    <div class="box">
+        <!--四个边-->
+        <div class="box-border-top"></div>
+        <div class="box-border-right"></div>
+        <div class="box-border-bottom"></div>
+        <div class="box-border-left"></div>
+    </div>
+</body>
+</html>
